@@ -20,13 +20,13 @@ class FritzboxNetworkModel(FritzboxModelInterface):
 
     def influx_data(self):
         influx_result = list()
-        influx_result = InfluxPrint.append(influx_result, "LocalDNSServer", self.local_dns)
-        influx_result = InfluxPrint.append(influx_result, "HostNumberOfEntries", self.host_numbers)
-        influx_result = InfluxPrint.append(influx_result, "HostsActive", self.active_hosts)
-        influx_result = InfluxPrint.append(influx_result, "HostsActiveLAN", self.active_hosts_lan)
-        influx_result = InfluxPrint.append(influx_result, "HostsActiveWLAN", self.active_hosts_wlan)
-        influx_result = InfluxPrint.append(influx_result, "HostsKnown", self.host_numbers)
-        influx_result = InfluxPrint.append(influx_result, "HostsKnownLAN", self.hosts_lan)
-        influx_result = InfluxPrint.append(influx_result, "HostsKnownWLAN", self.hosts_wlan)
+        InfluxPrint.append(influx_result, "LocalDNSServer", self.local_dns)
+        InfluxPrint.append(influx_result, "HostNumberOfEntries", self.host_numbers)
+        InfluxPrint.append(influx_result, "HostsActive", self.active_hosts)
+        InfluxPrint.append(influx_result, "HostsActiveLAN", self.active_hosts_lan)
+        InfluxPrint.append(influx_result, "HostsActiveWLAN", self.active_hosts_wlan)
+        InfluxPrint.append(influx_result, "HostsKnown", self.host_numbers)
+        InfluxPrint.append(influx_result, "HostsKnownLAN", self.hosts_lan)
+        InfluxPrint.append(influx_result, "HostsKnownWLAN", self.hosts_wlan)
 
         return ",".join(influx_result)

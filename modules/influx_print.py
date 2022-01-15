@@ -4,8 +4,9 @@ class InfluxPrint:
         self.__FB_NAME = fritzbox_name
 
     def print(self, tag: str, data: str):
-        influx = self.__FB_ID + ',' + self.__FB_NAME + ',source=' + tag + ' ' + data
-        print(influx)
+        if data:
+            influx = self.__FB_ID + ',' + self.__FB_NAME + ',source=' + tag + ' ' + data
+            print(influx)
 
     @staticmethod
     def append(influx_list: list, tag_name: str, value):
@@ -18,22 +19,24 @@ class InfluxPrint:
         elif isinstance(value, str):
             if value:
                 influx_list.append(InfluxPrint.tag_str(tag_name, value))
+        elif value is None:
+            return influx_list
         else:
             raise Exception("Unable to map value for influxdb")
         return influx_list
 
     @staticmethod
-    def tag_int(tagname: str, value: int) -> str:
-        return f'{tagname}={value}i'
+    def tag_int(tag_name: str, value: int) -> str:
+        return f'{tag_name}={value}i'
 
     @staticmethod
-    def tag_float(tagname: str, value: float) -> str:
-        return f'{tagname}={value}'
+    def tag_float(tag_name: str, value: float) -> str:
+        return f'{tag_name}={value}'
 
     @staticmethod
-    def tag_bool(tagname: str, value: bool) -> str:
-        return f'{tagname}={value}'
+    def tag_bool(tag_name: str, value: bool) -> str:
+        return f'{tag_name}={value}'
 
     @staticmethod
-    def tag_str(tagname: str, value: str) -> str:
-        return f'{tagname}="{value}"'
+    def tag_str(tag_name: str, value: str) -> str:
+        return f'{tag_name}="{value}"'

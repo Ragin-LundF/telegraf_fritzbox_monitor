@@ -16,9 +16,9 @@ class FritzboxLANModel(FritzboxModelInterface):
 
     def influx_data(self) -> str:
         influx_result = list()
-        influx_result.append(InfluxPrint.tag_int("BytesSent", self.bytes_sent))
-        influx_result.append(InfluxPrint.tag_int("BytesReceived", self.bytes_received))
-        influx_result.append(InfluxPrint.tag_int("PacketsSent", self.packets_sent))
-        influx_result.append(InfluxPrint.tag_int("PacketsReceived", self.packets_received))
+        InfluxPrint.append(influx_result, "BytesSent", self.bytes_sent)
+        InfluxPrint.append(influx_result, "BytesReceived", self.bytes_received)
+        InfluxPrint.append(influx_result, "PacketsSent", self.packets_sent)
+        InfluxPrint.append(influx_result, "PacketsReceived", self.packets_received)
 
         return ",".join(influx_result)

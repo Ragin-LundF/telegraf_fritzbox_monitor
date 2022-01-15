@@ -17,10 +17,10 @@ class FritzboxWLANModel(FritzboxModelInterface):
 
     def influx_data(self) -> str:
         influx_result = list()
-        influx_result.append(InfluxPrint.tag_str("SSID", self.ssid))
-        influx_result.append(InfluxPrint.tag_int("Channel", self.channel))
-        influx_result.append(InfluxPrint.tag_int("ClientsNumber", self.clients))
-        influx_result.append(InfluxPrint.tag_int("PacketsSent", self.packets_sent))
-        influx_result.append(InfluxPrint.tag_int("PacketsReceived", self.packets_received))
+        InfluxPrint.append(influx_result, "SSID", self.ssid)
+        InfluxPrint.append(influx_result, "Channel", self.channel)
+        InfluxPrint.append(influx_result, "ClientsNumber", self.clients)
+        InfluxPrint.append(influx_result, "PacketsSent", self.packets_sent)
+        InfluxPrint.append(influx_result, "PacketsReceived", self.packets_received)
 
         return ",".join(influx_result)
