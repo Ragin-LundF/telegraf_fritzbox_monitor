@@ -5,7 +5,7 @@ from modules.influx_print import InfluxPrint
 
 
 @dataclass
-class FritzboxWAN(FritzboxModelInterface):
+class FritzboxWANModel(FritzboxModelInterface):
     """Contains WAN data"""
 
     def __init__(self, is_connected: bool, is_linked: bool, connection_uptime: int, bytes_sent: int,

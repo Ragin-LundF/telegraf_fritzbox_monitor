@@ -1,6 +1,6 @@
 from enum import Enum
 
-from models.network.fritzbox_wlan import FritzboxWLAN
+from models.network.fritzbox_wlan_model import FritzboxWLANModel
 from modules.fritz_connect import FritzboxConnect
 
 
@@ -16,8 +16,8 @@ class FritzboxConnectWLAN:
         self.__WLAN_STATS = fc.read_module(wlan_type.value, 'GetStatistics')
         self.__WLAN_TOTAL_ASSOC = fc.read_module(wlan_type.value, 'GetTotalAssociations')
 
-    def stats(self) -> FritzboxWLAN:
-        wlan_model = FritzboxWLAN(
+    def stats(self) -> FritzboxWLANModel:
+        wlan_model = FritzboxWLANModel(
             ssid=self.ssid(),
             channel=self.channel(),
             clients=self.clients(),

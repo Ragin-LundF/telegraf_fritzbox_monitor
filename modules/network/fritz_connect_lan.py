@@ -1,4 +1,4 @@
-from models.network.fritzbox_lan import FritzboxLAN
+from models.network.fritzbox_lan_model import FritzboxLANModel
 from modules.fritz_connect import FritzboxConnect
 
 
@@ -6,8 +6,8 @@ class FritzboxConnectLAN:
     def __init__(self, fc: FritzboxConnect):
         self.__LAN_STATS = fc.read_module('LANEthernetInterfaceConfig1', 'GetStatistics')
 
-    def stats(self) -> FritzboxLAN:
-        lan_model = FritzboxLAN(
+    def stats(self) -> FritzboxLANModel:
+        lan_model = FritzboxLANModel(
             bytes_sent=self.bytes_sent(),
             bytes_received=self.bytes_received(),
             packets_sent=self.packets_sent(),

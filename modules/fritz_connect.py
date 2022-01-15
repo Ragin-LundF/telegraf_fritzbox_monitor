@@ -11,11 +11,20 @@ class FritzboxConnect:
         self.__FHOSTS = FritzHosts(address=address, user=username, password=password, port=port, timeout=2.0)
         self.__FSTAT = FritzStatus(address=address, user=username, password=password, port=port, timeout=2.0)
 
+        # get info of DSL (WANPPP) or Cable (WANIP)
+        if len(self.read_module('WANPPPConnection1', 'GetInfo')) > 0:
+            self.__FCONN_INFO = self.read_module('WANPPPConnection1', 'GetInfo')
+        else:
+            self.__FCONN_INFO = self.read_module('WANIPConnection1', 'GetInfo')
+
     def call(self):
         return self.__FCALL
 
     def connection(self) -> FritzConnection:
         return self.__FCONN
+
+    def connection_info(self) -> FritzConnection:
+        return self.__FCONN_INFO
 
     def hosts(self) -> FritzHosts:
         return self.__FHOSTS

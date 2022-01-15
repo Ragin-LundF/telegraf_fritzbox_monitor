@@ -5,7 +5,7 @@ from modules.influx_print import InfluxPrint
 
 
 @dataclass
-class FritzboxNetwork(FritzboxModelInterface):
+class FritzboxNetworkModel(FritzboxModelInterface):
     """Contains Network data"""
 
     def __init__(self, local_dns: str, host_numbers: int, active_hosts: int, active_hosts_lan: int,

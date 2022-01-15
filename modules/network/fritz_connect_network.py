@@ -1,4 +1,4 @@
-from models.network.fritzbox_network import FritzboxNetwork
+from models.network.fritzbox_network_model import FritzboxNetworkModel
 from modules.fritz_connect import FritzboxConnect
 
 
@@ -8,8 +8,8 @@ class FritzboxConnectNetwork:
         self.__FC_HOSTS = fc.hosts()
         self.__ALL_HOST_INFO = self.__FC_HOSTS.get_hosts_info()
 
-    def stats(self) -> FritzboxNetwork:
-        lan_model = FritzboxNetwork(
+    def stats(self) -> FritzboxNetworkModel:
+        lan_model = FritzboxNetworkModel(
             local_dns=self.local_dns(),
             host_numbers=self.host_numbers(),
             active_hosts=self.active_hosts(),
