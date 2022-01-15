@@ -4,10 +4,7 @@ from modules.fritz_connect import FritzboxConnect
 
 class FritzboxConnectLAN:
     def __init__(self, fc: FritzboxConnect):
-        self.FC = fc
-
-    def _lan_stats(self):
-        return self.FC.read_module('LANEthernetInterfaceConfig1', 'GetStatistics')
+        self.__LAN_STATS = fc.read_module('LANEthernetInterfaceConfig1', 'GetStatistics')
 
     def stats(self) -> FritzboxLAN:
         lan_model = FritzboxLAN(
@@ -20,13 +17,13 @@ class FritzboxConnectLAN:
         return lan_model
 
     def bytes_sent(self) -> int:
-        return self._lan_stats().get('NewBytesSent')
+        return self.__LAN_STATS.get('NewBytesSent')
 
     def bytes_received(self) -> int:
-        return self._lan_stats().get('NewBytesReceived')
+        return self.__LAN_STATS.get('NewBytesReceived')
 
     def packets_sent(self) -> int:
-        return self._lan_stats().get('NewPacketsSent')
+        return self.__LAN_STATS.get('NewPacketsSent')
 
     def packets_received(self) -> int:
-        return self._lan_stats().get('NewPacketsReceived')
+        return self.__LAN_STATS.get('NewPacketsReceived')

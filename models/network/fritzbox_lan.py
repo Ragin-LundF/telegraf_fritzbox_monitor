@@ -1,10 +1,11 @@
 from dataclasses import dataclass
 
+from models.fritzbox_model_interface import FritzboxModelInterface
 from modules.influx_print import InfluxPrint
 
 
 @dataclass
-class FritzboxLAN:
+class FritzboxLAN(FritzboxModelInterface):
     """Contains LAN data"""
 
     def __init__(self, bytes_sent: int, bytes_received: int, packets_sent: int, packets_received: int):

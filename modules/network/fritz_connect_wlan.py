@@ -12,17 +12,9 @@ class WLANType(Enum):
 
 class FritzboxConnectWLAN:
     def __init__(self, fc: FritzboxConnect, wlan_type: WLANType):
-        self.FC = fc
-        self.WLAN_TYPE = wlan_type
-
-    def _wlan_info(self):
-        return self.FC.read_module(self.WLAN_TYPE.value, 'GetInfo')
-
-    def _wlan_stats(self):
-        return self.FC.read_module(self.WLAN_TYPE.value, 'GetStatistics')
-
-    def _wlan_total_assoc(self):
-        return self.FC.read_module(self.WLAN_TYPE.value, 'GetTotalAssociations')
+        self.__WLAN_INFO = fc.read_module(wlan_type.value, 'GetInfo')
+        self.__WLAN_STATS = fc.read_module(wlan_type.value, 'GetStatistics')
+        self.__WLAN_TOTAL_ASSOC = fc.read_module(wlan_type.value, 'GetTotalAssociations')
 
     def stats(self) -> FritzboxWLAN:
         wlan_model = FritzboxWLAN(
@@ -36,16 +28,16 @@ class FritzboxConnectWLAN:
         return wlan_model
 
     def ssid(self) -> str:
-        return self._wlan_info().get('NewSSID')
+        return self.__WLAN_INFO.get('NewSSID')
 
     def channel(self) -> int:
-        return self._wlan_info().get('NewChannel')
+        return self.__WLAN_INFO.get('NewChannel')
 
     def clients(self) -> int:
-        return self._wlan_total_assoc().get('NewTotalAssociations')
+        return self.__WLAN_TOTAL_ASSOC.get('NewTotalAssociations')
 
     def packets_sent(self) -> int:
-        return self._wlan_stats().get('NewTotalPacketsSent')
+        return self.__WLAN_STATS.get('NewTotalPacketsSent')
 
     def packets_received(self) -> int:
-        return self._wlan_stats().get('NewTotalPacketsReceived')
+        return self.__WLAN_STATS.get('NewTotalPacketsReceived')
