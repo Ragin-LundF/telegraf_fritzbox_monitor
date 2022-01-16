@@ -32,7 +32,8 @@ class FritzboxConnectWAN:
             transmission_rate_downstream_str=self.transmission_rate_downstream_str(),
             transmission_rate_upstream_str=self.transmission_rate_upstream_str(),
             current_downstream_rate=self.current_downstream_rate(),
-            current_upstream_rate=self.current_upstream_rate()
+            current_upstream_rate=self.current_upstream_rate(),
+            dns_server=self.dns_server()
         )
 
         return wan_model
@@ -115,3 +116,10 @@ class FritzboxConnectWAN:
     def packet_upstream_rate(self) -> int:
         return self.__WAN_ADDON.get('NewPacketSendRate')
 
+    def dns_server(self) -> str:
+        dns_server_str = ""
+        if self.__WAN_ADDON.get('NewDNSServer1'):
+            dns_server_str = self.__WAN_ADDON.get('NewDNSServer1')
+        if self.__WAN_ADDON.get('NewDNSServer2'):
+            dns_server_str = f"{dns_server_str},{self.__WAN_ADDON.get('NewDNSServer2')}"
+        return dns_server_str

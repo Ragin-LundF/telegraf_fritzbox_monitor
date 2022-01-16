@@ -16,7 +16,7 @@ class FritzboxWANModel(FritzboxModelInterface):
                  max_bitrate_upstream_str: str, max_byterate_downstream: float, max_byterate_upstream: float,
                  transmission_rate_downstream: int, transmission_rate_upstream: int,
                  transmission_rate_downstream_str: str, transmission_rate_upstream_str: str,
-                 current_downstream_rate: int, current_upstream_rate: int):
+                 current_downstream_rate: int, current_upstream_rate: int, dns_server: str):
         self.is_connected: bool = is_connected
         self.is_linked: bool = is_linked
         self.connection_uptime: int = connection_uptime
@@ -41,6 +41,7 @@ class FritzboxWANModel(FritzboxModelInterface):
         self.transmission_rate_upstream_str: str = transmission_rate_upstream_str
         self.current_downstream_rate: int = current_downstream_rate
         self.current_upstream_rate: int = current_upstream_rate
+        self.dns_server: str = dns_server
 
     def influx_data(self) -> str:
         influx_result = list()
@@ -61,5 +62,6 @@ class FritzboxWANModel(FritzboxModelInterface):
         InfluxPrint.append(influx_result, "TransmissionRateUpstream", self.transmission_rate_upstream)
         InfluxPrint.append(influx_result, "ByteReceiveRate", self.current_downstream_rate)
         InfluxPrint.append(influx_result, "ByteSendRate", self.current_upstream_rate)
+        InfluxPrint.append(influx_result, "DNSServers", self.dns_server)
 
         return ",".join(influx_result)
