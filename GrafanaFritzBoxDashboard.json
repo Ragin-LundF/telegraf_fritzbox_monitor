@@ -3552,7 +3552,7 @@
       "type": "stat"
     }
   ],
-  "refresh": "",
+  "refresh": "1m",
   "schemaVersion": 34,
   "style": "dark",
   "tags": [],
@@ -3567,6 +3567,6 @@
   "timezone": "",
   "title": "FritzBoxDashboard (Telegraf)",
   "uid": "INoNQciRk",
-  "version": 27,
+  "version": 28,
   "weekStart": "monday"
 }
