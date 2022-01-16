@@ -9,6 +9,8 @@ Since it is inactive and has some issues with cable routers, this project is a c
 * Object-oriented codebase with smaller classes for better maintenance
 * No configuration of cable/DSL routers required (system selects by itself)
 
+![Grafana dashboard](docs/grafana_fritzbox.jpg)
+
 # Compatibility
 Any cable or DSL Fritz!Box routers should work without any special configuration.
 
