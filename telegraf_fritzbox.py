@@ -19,7 +19,10 @@ FRITZBOX_DEFAULT_DATABASE = 'FritzBox'
 
 def fritzbox_host_name(fc: FritzboxConnect) -> str:
     host_config = fc.read_module('LANHostConfigManagement1', 'GetInfo')
-    return host_config['NewDomainName']
+    try:
+        return host_config['NewDomainName']
+    except KeyError:
+        return "fritz.box"
 
 
 def show_help() -> None:

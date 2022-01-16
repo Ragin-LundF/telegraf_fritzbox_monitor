@@ -38,9 +38,3 @@ class FritzboxConnect:
         except:
             answer = dict()  # return an empty dict in case of failure
         return answer
-
-    def read_module_indexed(self, module: str, action: str, index: int) -> dict[any, str]:
-        try:
-            return self.connection().call_action(module, action, NewIndex=index)
-        except IndexError as ie:
-            raise ie
