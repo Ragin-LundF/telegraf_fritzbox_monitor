@@ -965,7 +965,7 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
-          "alias": "LAN Upstream",
+          "alias": "LAN Downstream",
           "datasource": {
             "type": "influxdb",
             "uid": "Jt65v01nk"
@@ -1017,7 +1017,7 @@
           ]
         },
         {
-          "alias": "LAN Downstream",
+          "alias": "LAN Upstream",
           "datasource": {
             "type": "influxdb",
             "uid": "Jt65v01nk"
@@ -1068,7 +1068,7 @@
           ]
         },
         {
-          "alias": "WLAN 2.4 GHz Upstream",
+          "alias": "WLAN 2.4 GHz Downstream",
           "datasource": {
             "type": "influxdb",
             "uid": "Jt65v01nk"
@@ -1119,7 +1119,7 @@
           ]
         },
         {
-          "alias": "WLAN 2.4 GHz Downstream",
+          "alias": "WLAN 2.4 GHz Upstream",
           "datasource": {
             "type": "influxdb",
             "uid": "Jt65v01nk"
@@ -1198,7 +1198,7 @@
             [
               {
                 "params": [
-                  "PacketsReceived"
+                  "PacketsSent"
                 ],
                 "type": "field"
               },
@@ -1221,7 +1221,7 @@
           ]
         },
         {
-          "alias": "WLAN 5 GHz Upstream",
+          "alias": "WLAN 5 GHz Downstream",
           "datasource": {
             "type": "influxdb",
             "uid": "Jt65v01nk"
@@ -3547,6 +3547,6 @@
   "timezone": "",
   "title": "FritzBoxDashboard (Telegraf)",
   "uid": "INoNQciRk",
-  "version": 21,
+  "version": 23,
   "weekStart": "monday"
 }
