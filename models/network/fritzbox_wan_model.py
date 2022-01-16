@@ -8,8 +8,8 @@ from modules.influx_print import InfluxPrint
 class FritzboxWANModel(FritzboxModelInterface):
     """Contains WAN data"""
 
-    def __init__(self, is_connected: bool, is_linked: bool, connection_uptime: int, bytes_sent: int,
-                 bytes_received: int, external_ipv4: str, external_ipv6: str, external_ipv6_info: dict,
+    def __init__(self, is_connected: bool, is_linked: bool, connection_uptime: int, bytes_sent: float,
+                 bytes_received: float, external_ipv4: str, external_ipv6: str, external_ipv6_info: dict,
                  max_linked_bitrate_downstream: int, max_linked_bitrate_upstream: int,
                  max_linked_bitrate_downstream_str: str, max_linked_bitrate_upstream_str: str,
                  max_bitrate_downstream: int, max_bitrate_upstream: int, max_bitrate_downstream_str: str,
@@ -20,8 +20,8 @@ class FritzboxWANModel(FritzboxModelInterface):
         self.is_connected: bool = is_connected
         self.is_linked: bool = is_linked
         self.connection_uptime: int = connection_uptime
-        self.bytes_sent: int = bytes_sent
-        self.bytes_received: int = bytes_received
+        self.bytes_sent: float = bytes_sent
+        self.bytes_received: float = bytes_received
         self.external_ipv4: str = external_ipv4
         self.external_ipv6: str = external_ipv6
         self.external_ipv6_info: dict = external_ipv6_info
