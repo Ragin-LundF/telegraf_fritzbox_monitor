@@ -3,6 +3,10 @@
 This project contains a Python application to collect metrics from a Fritz!Box and push the monitoring data into a InfluxDB for visualization in Grafana.
 For collecting the metrics, the [TR-064 protocol](https://avm.de/service/schnittstellen/) of AVM is used via the library [fritzconnection](https://github.com/kbr/fritzconnection).
 
+This stack runs very well on a Raspberry Pi 4.
+I've tested it with the 8GB version, but it should perform also with 4GB.
+On a Raspberry Pi Zero W ist is also possible to let it run, but there it will be very slow after some days.
+
 The basis of this project was [TelegrafFritzbox](https://github.com/Schmidsfeld/TelegrafFritzBox).
 Since it is inactive and has some issues with cable routers, this project is a complete rewrite with some enhancements:
 
@@ -32,6 +36,8 @@ It allows reusing existing Grafana Dashboards without big changes.
 ## Install
 ## Prerequisites
 * Telegraf, InfluxDB, Grafana is already installed
+  * Install Guides:
+    * [How to Install TIG stack (Telegraf, Influx and Grafana) on Ubuntu](https://onlyoneaman.medium.com/how-to-install-tig-stack-telegraf-influx-and-grafana-on-ubuntu-405755901ac2)
 * TR-064 protocol was activated in the Fritzbox:
   * `Heimnetz -> Netzwerk -> Netzwerkeinstellungen`
 * Recommended: Have a dedicated user on the Fritz!Box (for example: fritz-mon)
