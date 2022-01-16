@@ -1486,7 +1486,7 @@
       "options": {
         "colorMode": "value",
         "graphMode": "none",
-        "justifyMode": "center",
+        "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -1495,6 +1495,7 @@
           "fields": "/^FritzBox\\.DNSServers$/",
           "values": false
         },
+        "text": {},
         "textMode": "value"
       },
       "pluginVersion": "8.3.3",
@@ -3566,6 +3567,6 @@
   "timezone": "",
   "title": "FritzBoxDashboard (Telegraf)",
   "uid": "INoNQciRk",
-  "version": 26,
+  "version": 27,
   "weekStart": "monday"
 }
