@@ -47,10 +47,10 @@ class FritzboxConnectWAN:
         return self.__FC_STATUS.connection_uptime
 
     def bytes_sent(self) -> float:
-        return self.__FC_STATUS.bytes_sent
+        return float(self.__FC_STATUS.bytes_sent)
 
     def bytes_received(self) -> float:
-        return self.__FC_STATUS.bytes_received
+        return float(self.__FC_STATUS.bytes_received)
 
     def external_ipv4(self) -> str:
         return self.__FC_STATUS.external_ip
