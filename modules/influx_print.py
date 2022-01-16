@@ -26,6 +26,16 @@ class InfluxPrint:
         return influx_list
 
     @staticmethod
+    def append_float(influx_list: list, tag_name: str, value: float):
+        if isinstance(value, float):
+            influx_list.append(InfluxPrint.tag_float(tag_name, value))
+        elif value is None:
+            return influx_list
+        else:
+            raise Exception("Unable to map value for influxdb")
+        return influx_list
+
+    @staticmethod
     def tag_int(tag_name: str, value: int) -> str:
         return f'{tag_name}={value}i'
 
