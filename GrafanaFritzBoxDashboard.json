@@ -2573,6 +2573,9 @@
       },
       "fieldConfig": {
         "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -2588,7 +2591,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
+        "h": 4,
         "w": 4,
         "x": 0,
         "y": 19
@@ -2624,6 +2627,7 @@
               "type": "time"
             }
           ],
+          "hide": false,
           "measurement": "FritzBox",
           "orderByTime": "ASC",
           "policy": "default",
@@ -2663,6 +2667,7 @@
               "type": "time"
             }
           ],
+          "hide": false,
           "measurement": "FritzBox",
           "orderByTime": "ASC",
           "policy": "default",
@@ -2672,7 +2677,7 @@
             [
               {
                 "params": [
-                  "TotalBytesReceved64"
+                  "TotalBytesReceived64"
                 ],
                 "type": "field"
               },
@@ -2689,7 +2694,7 @@
           "tags": []
         },
         {
-          "alias": "1 week",
+          "alias": "7 days",
           "datasource": {
             "type": "influxdb",
             "uid": "Jt65v01nk"
@@ -2702,16 +2707,19 @@
               "type": "time"
             }
           ],
+          "hide": false,
           "measurement": "FritzBox",
           "orderByTime": "ASC",
           "policy": "default",
+          "query": "SELECT non_negative_difference(last(\"TotalBytesReceved64\")) FROM \"FritzBox\" WHERE $timeFilter GROUP BY time(7d)",
+          "rawQuery": false,
           "refId": "B",
           "resultFormat": "time_series",
           "select": [
             [
               {
                 "params": [
-                  "TotalBytesReceved64"
+                  "TotalBytesReceived64"
                 ],
                 "type": "field"
               },
@@ -3104,171 +3112,6 @@
       },
       "fieldConfig": {
         "defaults": {
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "decbytes"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 4,
-        "x": 0,
-        "y": 22
-      },
-      "id": 50,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.3.3",
-      "targets": [
-        {
-          "alias": "1 hour",
-          "datasource": {
-            "type": "influxdb",
-            "uid": "Jt65v01nk"
-          },
-          "groupBy": [
-            {
-              "params": [
-                "1h"
-              ],
-              "type": "time"
-            }
-          ],
-          "measurement": "FritzBox",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "C",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "TotalBytesSent64"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "last"
-              },
-              {
-                "params": [],
-                "type": "non_negative_difference"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "1 day",
-          "datasource": {
-            "type": "influxdb",
-            "uid": "Jt65v01nk"
-          },
-          "groupBy": [
-            {
-              "params": [
-                "1d"
-              ],
-              "type": "time"
-            }
-          ],
-          "measurement": "FritzBox",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "TotalBytesSent64"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "last"
-              },
-              {
-                "params": [],
-                "type": "non_negative_difference"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "1 week",
-          "datasource": {
-            "type": "influxdb",
-            "uid": "Jt65v01nk"
-          },
-          "groupBy": [
-            {
-              "params": [
-                "7d"
-              ],
-              "type": "time"
-            }
-          ],
-          "measurement": "FritzBox",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "TotalBytesSent64"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "last"
-              },
-              {
-                "params": [],
-                "type": "non_negative_difference"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "title": "TotalBytesSent",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "influxdb",
-        "uid": "Jt65v01nk"
-      },
-      "fieldConfig": {
-        "defaults": {
           "color": {
             "mode": "palette-classic"
           },
@@ -3530,6 +3373,182 @@
       ],
       "title": "Line Damping",
       "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "Jt65v01nk"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 23
+      },
+      "id": 50,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "alias": "1 hour",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "Jt65v01nk"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "1h"
+              ],
+              "type": "time"
+            }
+          ],
+          "hide": false,
+          "measurement": "FritzBox",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "TotalBytesSent64"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [],
+                "type": "non_negative_difference"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "1 day",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "Jt65v01nk"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "1d"
+              ],
+              "type": "time"
+            }
+          ],
+          "hide": false,
+          "measurement": "FritzBox",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT non_negative_difference(last(\"TotalBytesSent64\")) FROM \"FritzBox\" WHERE $timeFilter GROUP BY time(1d)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "TotalBytesSent64"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [],
+                "type": "non_negative_difference"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "7 days",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "Jt65v01nk"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "7d"
+              ],
+              "type": "time"
+            }
+          ],
+          "hide": false,
+          "measurement": "FritzBox",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT non_negative_difference(last(\"TotalBytesSent64\")) FROM \"FritzBox\" WHERE $timeFilter GROUP BY time(7d)",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "TotalBytesSent64"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [],
+                "type": "non_negative_difference"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "title": "TotalBytesSent",
+      "type": "stat"
     }
   ],
   "refresh": "",
@@ -3547,6 +3566,6 @@
   "timezone": "",
   "title": "FritzBoxDashboard (Telegraf)",
   "uid": "INoNQciRk",
-  "version": 23,
+  "version": 26,
   "weekStart": "monday"
 }
