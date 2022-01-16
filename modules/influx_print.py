@@ -1,11 +1,11 @@
 class InfluxPrint:
-    def __init__(self, fritzbox_id: str, fritzbox_name: str):
-        self.__FB_ID = fritzbox_id
-        self.__FB_NAME = fritzbox_name
+    def __init__(self, fritzbox_db: str, fritzbox_host: str):
+        self.__FB_DB = fritzbox_db
+        self.__FB_HOST = fritzbox_host
 
     def print(self, tag: str, data: str):
         if data:
-            influx = self.__FB_ID + ',' + self.__FB_NAME + ',source=' + tag + ' ' + data
+            influx = f'{self.__FB_DB},host={self.__FB_HOST},source={tag} {data}'
             print(influx)
 
     @staticmethod
