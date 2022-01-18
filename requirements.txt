@@ -1,1 +1,1 @@
-fritzconnection
+fritzconnection >= 1.9.1
