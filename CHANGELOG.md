@@ -2,6 +2,12 @@
 
 ## 1.2.0
 
+It is required to re-execute the pip installer:
+
+```bash
+pip3 install -r requirements.txt
+```
+
 ### Phone Call Counter
 Added a feature to see how many calls are
 - missed

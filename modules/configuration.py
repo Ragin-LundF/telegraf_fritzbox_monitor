@@ -1,4 +1,5 @@
 import logging
+import os
 from typing import Any
 
 import hiyapyco
@@ -22,7 +23,8 @@ class Configuration:
         return self.__config
 
     def __load_config(self) -> Any:
-        return hiyapyco.load('config.yaml', 'config_custom.yaml', method=hiyapyco.METHOD_MERGE, interpolate=True,
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        return hiyapyco.load(f'{dir_path}/../config.yaml', f'{dir_path}/../config_custom.yaml', method=hiyapyco.METHOD_MERGE, interpolate=True,
                              failonmissingfiles=False, loglevelmissingfiles=logging.DEBUG)
 
     def __connection_fritz_username(self):
