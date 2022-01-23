@@ -8,6 +8,8 @@ Added a feature to see how many calls are
 - incoming
 - outgoing
 
+In addition, the total time spent on these call types is also counted.
+
 This feature uses a local SQLite database to store the calls and to avoid duplicates while a day.
 It stores some data there, to allow more statistics later.
 The data will also be cleaned up after some days to avoid too much redundant data.

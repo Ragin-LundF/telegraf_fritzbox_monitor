@@ -13,31 +13,58 @@ class FritzboxConnectPhone:
         self.__DB = fc.database()
         self.__DAYS = fc.config().defaults_phone_days
         self.__DAYS_KEPT = fc.config().defaults_phone_days_kept
+        self.__CALLS_MISSED = self.__update_db_and_filter(
+            self.__FC_CALL.get_missed_calls(days=self.__DAYS),
+            CallType.missed)
+        self.__CALLS_OUTGOING = self.__update_db_and_filter(
+            self.__FC_CALL.get_out_calls(days=self.__DAYS),
+            CallType.outgoing)
+        self.__CALLS_RECEIVED = self.__update_db_and_filter(
+            self.__FC_CALL.get_received_calls(days=self.__DAYS),
+            CallType.received)
         self.__cleanup()
 
     def stats(self) -> FritzboxPhoneModel:
         phone_model = FritzboxPhoneModel(
             count_missed_calls=self.count_missed_calls(),
             count_out_calls=self.count_out_calls(),
-            count_received_calls=self.count_received_calls()
+            count_received_calls=self.count_received_calls(),
+            time_missed_calls=self.time_missed_calls(),
+            time_out_calls=self.time_out_calls(),
+            time_received_calls=self.time_received_calls()
         )
 
         return phone_model
 
     def count_missed_calls(self) -> int:
-        return self.__update_db_and_count(self.__FC_CALL.get_missed_calls(days=self.__DAYS), CallType.missed)
+        return len(self.__CALLS_MISSED)
 
     def count_out_calls(self) -> int:
-        return self.__update_db_and_count(self.__FC_CALL.get_out_calls(days=self.__DAYS), CallType.outgoing)
+        return len(self.__CALLS_OUTGOING)
 
     def count_received_calls(self) -> int:
-        return self.__update_db_and_count(self.__FC_CALL.get_received_calls(days=self.__DAYS), CallType.received)
+        return len(self.__CALLS_RECEIVED)
+
+    def time_missed_calls(self) -> int:
+        return self.__aggregate_call_time(self.__CALLS_MISSED)
+
+    def time_out_calls(self) -> int:
+        return self.__aggregate_call_time(self.__CALLS_OUTGOING)
+
+    def time_received_calls(self) -> int:
+        return self.__aggregate_call_time(self.__CALLS_RECEIVED)
+
+    def __aggregate_call_time(self, phone_calls: list):
+        call_time: int = 0
+        for entry in phone_calls:
+            call_time = call_time + self.__calculate_time_in_seconds(entry.Duration)
+        return call_time
 
     def __calculate_time_in_seconds(self, timestr: str) -> int:
         pt = datetime.strptime(timestr, '%M:%S')
         return pt.second + pt.minute * 60 + pt.hour * 3600
 
-    def __update_db_and_count(self, phone_calls_fb: list, call_type) -> int:
+    def __update_db_and_filter(self, phone_calls_fb: list, call_type) -> list:
         self.__check_call_type(call_type)
         sql_query = f"""
             SELECT call_id FROM PHONE_CALLS
@@ -54,7 +81,7 @@ class FritzboxConnectPhone:
                         if entry_fb.Id == entry_db[0]:
                             phone_calls_fb.remove(entry_fb)
                 self.__add_calls_to_database(phone_calls_fb)
-        return len(phone_calls_fb)
+        return phone_calls_fb
 
     def __add_calls_to_database(self, calls: list) -> None:
         if len(calls) > 0:
