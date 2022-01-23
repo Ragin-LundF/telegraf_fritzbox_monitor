@@ -13,7 +13,6 @@ from modules.network.fritz_connect_lan import FritzboxConnectLAN
 from modules.network.fritz_connect_network import FritzboxConnectNetwork
 from modules.network.fritz_connect_wan import FritzboxConnectWAN
 from modules.network.fritz_connect_wlan import FritzboxConnectWLAN, WLANType
-
 # Default database for InfluxDB
 from modules.phone.fritz_connect_phone import FritzboxConnectPhone
 
@@ -25,7 +24,7 @@ class Application:
     def execute(self) -> None:
         args = self.__get_cli_args()
         if not args.password and self.__config.get().connection_password is None:
-            print('Please configure a password to access the Fritz!Box.')
+            print('Please configure a password to access the Fritz!Box.', file=sys.stderr)
             self.__show_help()
             sys.exit(1)
 
@@ -39,8 +38,8 @@ class Application:
         try:
             fritz_connect = FritzboxConnect(config=self.__config.get())
         except BaseException as exception:
-            print(exception)
-            print("Cannot connect to Fritz!Box. ")
+            print(exception, file=sys.stderr)
+            print("Cannot connect to Fritz!Box.", file=sys.stderr)
             self.__show_help()
             sys.exit(1)
 
