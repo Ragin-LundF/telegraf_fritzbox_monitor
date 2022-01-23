@@ -21,6 +21,8 @@ It stores some data there, to allow more statistics later.
 The data will also be cleaned up after some days to avoid too much redundant data.
 In the YAML configuration file it is possible to configure this feature. 
 
+To see the phone call visualization in Grafana, please update your Dashboard configuration with the current version.
+
 ### YAML configuration possibility
 With this release it is possible to configure most parameters via a YAML configuration file.
 The only parameter, which still has to be used via CLI is the the address `-i` parameter.
@@ -33,4 +35,4 @@ The configuration of this file will be merged with the default `config.yaml` fil
 For more information about this feature, please look into the `README.md`.
 
 ### install.sh optimization
-The `install.sh` file will not longer overwrite the `telegraf_fritzbox.conf` file in `/etc/telegraf/telegraf.d/`` 
+The `install.sh` file will no longer overwrite the `telegraf_fritzbox.conf` file in `/etc/telegraf/telegraf.d/`` 

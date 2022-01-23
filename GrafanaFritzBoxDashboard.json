@@ -3737,11 +3737,35 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "palette-classic"
           },
           "custom": {
-            "fillOpacity": 70,
-            "lineWidth": 1
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 10,
+            "gradientMode": "hue",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
           },
           "mappings": [],
           "thresholds": {
@@ -3752,31 +3776,36 @@
                 "value": null
               },
               {
-                "color": "#6ED0E0",
-                "value": 1
-              },
-              {
-                "color": "#1F78C1",
+                "color": "#EAB839",
                 "value": 2
               },
               {
-                "color": "#EAB839",
+                "color": "#EF843C",
                 "value": 3
               },
               {
-                "color": "#EF843C",
-                "value": 5
+                "color": "#E24D42",
+                "value": 4
               },
               {
                 "color": "red",
-                "value": 10
+                "value": 5
               },
               {
-                "color": "#E24D42",
-                "value": 20
+                "color": "#6ED0E0",
+                "value": 6
+              },
+              {
+                "color": "#1F78C1",
+                "value": 7
+              },
+              {
+                "color": "#BA43A9",
+                "value": 10
               }
             ]
-          }
+          },
+          "unit": "none"
         },
         "overrides": []
       },
@@ -3788,13 +3817,13 @@
       },
       "id": 59,
       "options": {
-        "colWidth": 0.9,
         "legend": {
+          "calcs": [
+            "sum"
+          ],
           "displayMode": "list",
           "placement": "bottom"
         },
-        "rowHeight": 0.9,
-        "showValue": "auto",
         "tooltip": {
           "mode": "single"
         }
@@ -3928,7 +3957,7 @@
         }
       ],
       "title": "Phone Call Count History",
-      "type": "status-history"
+      "type": "timeseries"
     },
     {
       "datasource": {
@@ -4088,16 +4117,16 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "line",
+            "drawStyle": "bars",
             "fillOpacity": 25,
-            "gradientMode": "none",
+            "gradientMode": "hue",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
             },
             "lineInterpolation": "smooth",
-            "lineWidth": 1,
+            "lineWidth": 2,
             "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
@@ -4109,7 +4138,7 @@
               "mode": "none"
             },
             "thresholdsStyle": {
-              "mode": "off"
+              "mode": "area"
             }
           },
           "mappings": [],
@@ -4121,11 +4150,28 @@
                 "value": null
               },
               {
+                "color": "#EAB839",
+                "value": 30
+              },
+              {
+                "color": "#EF843C",
+                "value": 45
+              },
+              {
+                "color": "#E24D42",
+                "value": 60
+              },
+              {
                 "color": "red",
-                "value": 80
+                "value": 90
+              },
+              {
+                "color": "#6ED0E0",
+                "value": 120
               }
             ]
-          }
+          },
+          "unit": "m"
         },
         "overrides": []
       },
@@ -4138,7 +4184,9 @@
       "id": 61,
       "options": {
         "legend": {
-          "calcs": [],
+          "calcs": [
+            "sum"
+          ],
           "displayMode": "list",
           "placement": "bottom"
         },
@@ -4244,13 +4292,13 @@
     "list": []
   },
   "time": {
-    "from": "now-24h",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "FritzBoxDashboard (Telegraf)",
   "uid": "INoNQciRk",
-  "version": 36,
+  "version": 40,
   "weekStart": "monday"
 }
