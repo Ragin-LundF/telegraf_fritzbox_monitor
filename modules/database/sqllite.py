@@ -1,16 +1,21 @@
 import os
 import sqlite3 as sql
+import sys
 from sqlite3 import Connection, Cursor
 from typing import Iterable
 
 
-class Database():
+class Database:
     __connection: Connection
 
     def __init__(self):
         dir_path = os.path.dirname(os.path.realpath(__file__))
-        self.__connection = sql.connect(f'{dir_path}/../../fritz.db')
-        self.__create_tables()
+        try:
+            self.__connection = sql.connect(f'{dir_path}/../../fritz.db')
+            self.__create_tables()
+        except Exception as exception:
+            print(f"Cannot open database [{exception}]", file=sys.stderr)
+            exit(1)
 
     def __create_tables(self) -> None:
         with self.__connection:

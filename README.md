@@ -55,6 +55,9 @@ sudo pip3 install -r requirements.txt
 sudo ./install.sh
 ```
 
+The `install.sh` script sets the permission of the directory to the user/group `telegraf`.
+If this is different on your installation, please change it in the script.
+
 To check if everything is working, you can execute the `command` from the `telegraf_fritzbox.conf` file in your shell.
 If everything is fine, it outputs data like this:
 

@@ -13,3 +13,5 @@ cp telegraf_fritzbox.py ${DEST_DIR}/
 cp config.yaml ${DEST_DIR}/
 cp -fR models ${DEST_DIR}/
 cp -fR modules ${DEST_DIR}/
+
+chown -R telegraf:telegraf ${DEST_DIR}
