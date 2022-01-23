@@ -1,3 +1,6 @@
+from datetime import datetime
+
+
 class InfluxPrint:
     def __init__(self, fritzbox_db: str, fritzbox_host: str):
         self.__FB_DB = fritzbox_db
@@ -23,7 +26,13 @@ class InfluxPrint:
             return influx_list
         else:
             raise Exception("Unable to map value for influxdb")
+
         return influx_list
+
+    @staticmethod
+    def calculate_time_in_seconds(timestr: str) -> int:
+        pt = datetime.strptime(timestr, '%M:%S')
+        return pt.second + pt.minute * 60 + pt.hour * 3600
 
     @staticmethod
     def append_float(influx_list: list, tag_name: str, value: float):

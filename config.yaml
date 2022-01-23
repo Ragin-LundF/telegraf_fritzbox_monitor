@@ -1,0 +1,22 @@
+features:
+  # When this option is enabled, the application tracks calls.
+  # If no phones are configured, you can disable this function.
+  #
+  # Possible values:
+  # True - Activates phone call tracking
+  # False - Deactivates phone call tracking
+  enable_phone_call_tracking: True
+
+defaults:
+  # Default value for the database name (InfluxDB)
+  fritzbox_default_database: 'FritzBox'
+  # Number of days to retrieve call tracking in Fritz!Box
+  fritzbox_defaults_phone_days: 1
+
+connection:
+  # The username of the monitor user
+  fritzbox_username:
+  # The password of the monitor user
+  fritzbox_password:
+  # The port of the Fritz!Box.
+  fritzbox_port:
