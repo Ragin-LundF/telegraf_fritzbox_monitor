@@ -2,6 +2,9 @@
 
 ## 1.2.0
 
+Please ensure, that the directory of the application has the same user/group as the telegraf daemon.
+By default, the `install.sh` will set the owner to `telegraf:telegraf`.
+
 It is required to re-execute the pip installer:
 
 ```bash
