@@ -10,6 +10,8 @@ Added a feature to see how many calls are
 
 This feature uses a local SQLite database to store the calls and to avoid duplicates while a day.
 It stores some data there, to allow more statistics later.
+The data will also be cleaned up after some days to avoid too much redundant data.
+In the YAML configuration file it is possible to configure this feature. 
 
 ### YAML configuration possibility
 With this release it is possible to configure most parameters via a YAML configuration file.

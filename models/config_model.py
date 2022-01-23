@@ -12,6 +12,7 @@ class ConfigurationModel:
         self.connection_port: str = ""
         self.defaults_database: str = "FritzBox"
         self.defaults_phone_days: int = 1
+        self.defaults_phone_days_kept: int = 5
         self.features_enable_phone_call_tracking: bool = True
 
     def set_connection_address(self, address: str) -> None:
@@ -31,6 +32,9 @@ class ConfigurationModel:
 
     def set_defaults_phone_days(self, phone_days: str) -> None:
         self.defaults_phone_days = phone_days
+
+    def set_defaults_phone_days_kept(self, phone_days_kept: str) -> None:
+        self.defaults_phone_days_kept = phone_days_kept
 
     def set_features_enable_phone_call_tracking(self, phone_tracking: bool) -> None:
         self.features_enable_phone_call_tracking = phone_tracking

@@ -9,9 +9,12 @@ features:
 
 defaults:
   # Default value for the database name (InfluxDB)
-  fritzbox_default_database: 'FritzBox'
+  influx_database: 'FritzBox'
   # Number of days to retrieve call tracking in Fritz!Box
-  fritzbox_defaults_phone_days: 1
+  fritzbox_phone_call_days: 1
+  # Days how long phone call data should be kept in the local SQLite.
+  # Note: this value has to be higher than `fritzbox_phone_call_days`
+  fritzbox_phone_days_local_storage: 5
 
 connection:
   # The username of the monitor user

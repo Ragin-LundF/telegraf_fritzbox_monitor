@@ -34,3 +34,7 @@ class Database():
     def select(self, sql_query) -> list:
         with self.__connection:
             return self.__connection.execute(sql_query).fetchall()
+
+    def execute(self, sql_query) -> None:
+        with self.__connection:
+            self.__connection.execute(sql_query)

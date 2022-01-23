@@ -15,6 +15,7 @@ class Configuration:
         self.__config.set_connection_port(self.__connection_fritz_port())
         self.__config.set_defaults_database(self.__default_database())
         self.__config.set_defaults_phone_days(self.__defaults_phone_days())
+        self.__config.set_defaults_phone_days_kept(self.__defaults_phone_days_kept())
         self.__config.set_features_enable_phone_call_tracking(self.__features_phone_call_tracking())
 
     def get(self):
@@ -34,10 +35,13 @@ class Configuration:
         return self.__config_yaml.get('connection')['fritzbox_port']
 
     def __default_database(self):
-        return self.__config_yaml.get('defaults')['fritzbox_default_database']
+        return self.__config_yaml.get('defaults')['influx_database']
 
     def __defaults_phone_days(self):
-        return self.__config_yaml.get('defaults')['fritzbox_defaults_phone_days']
+        return self.__config_yaml.get('defaults')['fritzbox_phone_call_days']
+
+    def __defaults_phone_days_kept(self):
+        return self.__config_yaml.get('defaults')['fritzbox_phone_days_local_storage']
 
     def __features_phone_call_tracking(self) -> bool:
         return self.__config_yaml.get('features')['enable_phone_call_tracking']

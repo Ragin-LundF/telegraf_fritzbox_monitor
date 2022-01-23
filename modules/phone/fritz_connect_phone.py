@@ -12,6 +12,8 @@ class FritzboxConnectPhone:
         self.__FC_CALL = fc.call()
         self.__DB = fc.database()
         self.__DAYS = fc.config().defaults_phone_days
+        self.__DAYS_KEPT = fc.config().defaults_phone_days_kept
+        self.__cleanup()
 
     def stats(self) -> FritzboxPhoneModel:
         phone_model = FritzboxPhoneModel(
@@ -83,6 +85,13 @@ class FritzboxConnectPhone:
 
     def __datetime_start_today(self) -> datetime:
         return datetime.combine(date.today(), time())
+
+    def __cleanup(self):
+        sql_query = f"""
+            DELETE FROM PHONE_CALLS
+            WHERE call_date < {int((self.__datetime_start_today() - timedelta(days=self.__DAYS_KEPT)).timestamp())} 
+        """
+        self.__DB.execute(sql_query)
 
 
 class CallType(Enum):
