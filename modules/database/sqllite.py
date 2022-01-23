@@ -9,7 +9,7 @@ class Database():
 
     def __init__(self):
         dir_path = os.path.dirname(os.path.realpath(__file__))
-        self.__connection = sql.connect(f'{dir_path}/fritz.db')
+        self.__connection = sql.connect(f'{dir_path}/../../fritz.db')
         self.__create_tables()
 
     def __create_tables(self) -> None:
