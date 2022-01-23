@@ -1,3 +1,4 @@
+import os
 import sqlite3 as sql
 from sqlite3 import Connection, Cursor
 from typing import Iterable
