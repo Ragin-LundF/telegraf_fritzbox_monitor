@@ -3560,7 +3560,7 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "continuous-GrYlRd"
           },
           "mappings": [],
           "thresholds": {
@@ -3587,7 +3587,8 @@
       },
       "id": 55,
       "options": {
-        "orientation": "auto",
+        "displayMode": "lcd",
+        "orientation": "horizontal",
         "reduceOptions": {
           "calcs": [
             "sum"
@@ -3595,8 +3596,7 @@
           "fields": "",
           "values": false
         },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true
+        "showUnfilled": true
       },
       "pluginVersion": "8.3.4",
       "targets": [
@@ -3727,7 +3727,7 @@
         }
       ],
       "title": "Phone Calls Count Sum",
-      "type": "gauge"
+      "type": "bargauge"
     },
     {
       "datasource": {
@@ -3938,7 +3938,7 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "continuous-GrYlRd"
           },
           "mappings": [],
           "thresholds": {
@@ -3949,12 +3949,20 @@
                 "value": null
               },
               {
+                "color": "#EAB839",
+                "value": 30
+              },
+              {
                 "color": "red",
-                "value": 80
+                "value": 60
+              },
+              {
+                "color": "#6ED0E0",
+                "value": 120
               }
             ]
           },
-          "unit": "s"
+          "unit": "m"
         },
         "overrides": []
       },
@@ -3966,21 +3974,21 @@
       },
       "id": 57,
       "options": {
-        "orientation": "auto",
+        "displayMode": "lcd",
+        "orientation": "horizontal",
         "reduceOptions": {
           "calcs": [
-            "lastNotNull"
+            "sum"
           ],
           "fields": "",
           "values": false
         },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true
+        "showUnfilled": true
       },
       "pluginVersion": "8.3.4",
       "targets": [
         {
-          "alias": "Time Recevived Calls",
+          "alias": "Time Outgoing Calls",
           "datasource": {
             "type": "influxdb",
             "uid": "Jt65v01nk"
@@ -4008,20 +4016,20 @@
             [
               {
                 "params": [
-                  "TimeReceivedCalls"
+                  "TimeOutCalls"
                 ],
                 "type": "field"
               },
               {
                 "params": [],
-                "type": "mean"
+                "type": "sum"
               }
             ]
           ],
           "tags": []
         },
         {
-          "alias": "Time Outging Calls",
+          "alias": "Time Received Calls",
           "datasource": {
             "type": "influxdb",
             "uid": "Jt65v01nk"
@@ -4050,13 +4058,13 @@
             [
               {
                 "params": [
-                  "TimeOutCalls"
+                  "TimeReceivedCalls"
                 ],
                 "type": "field"
               },
               {
                 "params": [],
-                "type": "mean"
+                "type": "sum"
               }
             ]
           ],
@@ -4064,7 +4072,7 @@
         }
       ],
       "title": "Phone Calls Time Sum",
-      "type": "gauge"
+      "type": "bargauge"
     },
     {
       "datasource": {
@@ -4113,20 +4121,11 @@
                 "value": null
               },
               {
-                "color": "#EAB839",
-                "value": 30
-              },
-              {
                 "color": "red",
-                "value": 60
-              },
-              {
-                "color": "#6ED0E0",
-                "value": 120
+                "value": 80
               }
             ]
-          },
-          "unit": "s"
+          }
         },
         "overrides": []
       },
@@ -4252,6 +4251,6 @@
   "timezone": "",
   "title": "FritzBoxDashboard (Telegraf)",
   "uid": "INoNQciRk",
-  "version": 35,
+  "version": 36,
   "weekStart": "monday"
 }
