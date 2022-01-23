@@ -1,1 +1,2 @@
 fritzconnection >= 1.9.1
+HiYaPyCo~=0.4.16

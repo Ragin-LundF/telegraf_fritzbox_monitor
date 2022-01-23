@@ -5,3 +5,5 @@
 *.iml
 .idea
 __pycache__
+*.db
+config_custom.yaml
