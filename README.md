@@ -99,3 +99,13 @@ These options can be used for a preview directly with the script or they can be 
 Please aware, that this file will not be overwritten with the `install.sh` script.
 If you want to change options, you have to do it at `/etc/telegraf/telegraf.d/telegraf_fritzbox.conf` file after you've started the `install.sh` script once.
 
+#### Grafana
+
+Depending on the datasource (InfluxDB or Flux) you have to import one of those Dashboards:
+
+- [GrafanaFritzBoxDashboard.json](GrafanaFritzBoxDashboard.json) - InfluxDB v1 datasource
+- [GrafanaFritzBoxDashboard_Influx2.json](GrafanaFritzBoxDashboard_Influx2.json) - InfluxDB v2 (Flux)
+
+The Dashboard for InfluxDB 2 uses `tigstack` as default bucket name.
+
+For this template, you can configure the bucket and the measurement name (setting in the `config.yaml`) after importing the Dashboard via the `Settings` -> `Variables`.
