@@ -38,6 +38,8 @@ It allows reusing existing Grafana Dashboards without big changes.
 * Telegraf, InfluxDB, Grafana is already installed
   * Install Guides:
     * [How to Install TIG stack (Telegraf, Influx and Grafana) on Ubuntu](https://onlyoneaman.medium.com/how-to-install-tig-stack-telegraf-influx-and-grafana-on-ubuntu-405755901ac2)
+    * or
+    * [How to Install TIG Stack (Telegraf, InfluxDB 2, and Grafana) on Ubuntu 22.04](https://www.howtoforge.com/how-to-install-tig-stack-telegraf-influxdb-and-grafana-on-ubuntu-22-04/)
 * TR-064 protocol was activated in the Fritzbox:
   * `Heimnetz -> Netzwerk -> Netzwerkeinstellungen`
 * Recommended: Have a dedicated user on the Fritz!Box (for example: fritz-mon)
@@ -97,3 +99,13 @@ These options can be used for a preview directly with the script or they can be 
 Please aware, that this file will not be overwritten with the `install.sh` script.
 If you want to change options, you have to do it at `/etc/telegraf/telegraf.d/telegraf_fritzbox.conf` file after you've started the `install.sh` script once.
 
+#### Grafana
+
+Depending on the datasource (InfluxDB or Flux) you have to import one of those Dashboards:
+
+- [GrafanaFritzBoxDashboard.json](GrafanaFritzBoxDashboard.json) - InfluxDB v1 datasource
+- [GrafanaFritzBoxDashboard_Influx2.json](GrafanaFritzBoxDashboard_Influx2.json) - InfluxDB v2 (Flux)
+
+The Dashboard for InfluxDB 2 uses `tigstack` as default bucket name.
+
+For this template, you can configure the bucket and the measurement name (setting in the `config.yaml`) after importing the Dashboard via the `Settings` -> `Variables`.

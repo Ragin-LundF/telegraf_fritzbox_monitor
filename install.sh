@@ -10,7 +10,11 @@ fi
 # create directory
 mkdir -p ${DEST_DIR}
 cp telegraf_fritzbox.py ${DEST_DIR}/
-cp config.yaml ${DEST_DIR}/
+
+if [[ ! -e ${DEST_DIR}/config.yaml ]]; then
+  cp config.yaml ${DEST_DIR}/
+fi
+
 cp -fR models ${DEST_DIR}/
 cp -fR modules ${DEST_DIR}/
 

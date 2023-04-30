@@ -1,8 +1,7 @@
-import logging
 import os
 from typing import Any
 
-import hiyapyco
+import yaml
 
 from models.config_model import ConfigurationModel
 
@@ -24,26 +23,26 @@ class Configuration:
 
     def __load_config(self) -> Any:
         dir_path = os.path.dirname(os.path.realpath(__file__))
-        return hiyapyco.load(f'{dir_path}/../config.yaml', f'{dir_path}/../config_custom.yaml', method=hiyapyco.METHOD_MERGE, interpolate=True,
-                             failonmissingfiles=False, loglevelmissingfiles=logging.DEBUG)
+        with open(f"{dir_path}/../config.yaml", "r") as file:
+            return yaml.safe_load(file)
 
     def __connection_fritz_username(self):
-        return self.__config_yaml.get('connection')['fritzbox_username']
+        return self.__config_yaml["connection"]["fritzbox_username"]
 
     def __connection_fritz_password(self):
-        return self.__config_yaml.get('connection')['fritzbox_password']
+        return self.__config_yaml["connection"]["fritzbox_password"]
 
     def __connection_fritz_port(self):
-        return self.__config_yaml.get('connection')['fritzbox_port']
+        return self.__config_yaml["connection"]["fritzbox_port"]
 
     def __default_database(self):
-        return self.__config_yaml.get('defaults')['influx_database']
+        return self.__config_yaml["defaults"]["influx_database"]
 
     def __defaults_phone_days(self):
-        return self.__config_yaml.get('defaults')['fritzbox_phone_call_days']
+        return self.__config_yaml["defaults"]["fritzbox_phone_call_days"]
 
     def __defaults_phone_days_kept(self):
-        return self.__config_yaml.get('defaults')['fritzbox_phone_days_local_storage']
+        return self.__config_yaml["defaults"]["fritzbox_phone_days_local_storage"]
 
     def __features_phone_call_tracking(self) -> bool:
-        return self.__config_yaml.get('features')['enable_phone_call_tracking']
+        return self.__config_yaml["features"]["enable_phone_call_tracking"]
