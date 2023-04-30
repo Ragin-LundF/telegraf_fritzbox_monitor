@@ -8,13 +8,16 @@ Support for InfluxDB 2.x
 Update of dependencies
 
 - `fritzconnection` to 1.12.0
-- `HiYaPyCo` to 0.5.1
+- `PyYAML` 6.0.0 replaces now HiYaPyCo (thanks to @sbstnzmr)
 
 It is required to re-execute the pip installer:
 
 ```bash
 pip3 install -r requirements.txt
+./install.sh
 ```
+
+The `install.sh` script will only update the python files, but not an existing configuration (neither telegraf nor `config.yaml`).
 
 ## 1.2.0
 
