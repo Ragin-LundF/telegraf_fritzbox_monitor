@@ -38,6 +38,8 @@ It allows reusing existing Grafana Dashboards without big changes.
 * Telegraf, InfluxDB, Grafana is already installed
   * Install Guides:
     * [How to Install TIG stack (Telegraf, Influx and Grafana) on Ubuntu](https://onlyoneaman.medium.com/how-to-install-tig-stack-telegraf-influx-and-grafana-on-ubuntu-405755901ac2)
+    * or
+    * [How to Install TIG Stack (Telegraf, InfluxDB 2, and Grafana) on Ubuntu 22.04](https://www.howtoforge.com/how-to-install-tig-stack-telegraf-influxdb-and-grafana-on-ubuntu-22-04/)
 * TR-064 protocol was activated in the Fritzbox:
   * `Heimnetz -> Netzwerk -> Netzwerkeinstellungen`
 * Recommended: Have a dedicated user on the Fritz!Box (for example: fritz-mon)

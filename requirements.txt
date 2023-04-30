@@ -1,2 +1,2 @@
-fritzconnection >= 1.9.1
-HiYaPyCo~=0.4.16
+fritzconnection >= 1.12.0
+HiYaPyCo~=0.5.1

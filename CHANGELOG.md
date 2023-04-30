@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.3.0
+Support for InfluxDB 2.x
+
+- Added a new Grafana Dashboard Template [GrafanaFritzBoxDashboard_Influx2.json](GrafanaFritzBoxDashboard_Influx2.json)
+
+Update of dependencies
+
+- `fritzconnection` to 1.12.0
+- `HiYaPyCo` to 0.5.1
+
+It is required to re-execute the pip installer:
+
+```bash
+pip3 install -r requirements.txt
+```
+
 ## 1.2.0
 
 Please ensure, that the directory of the application has the same user/group as the telegraf daemon.
